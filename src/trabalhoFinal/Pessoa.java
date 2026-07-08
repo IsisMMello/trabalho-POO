@@ -2,16 +2,26 @@ package trabalhoFinal;
 import java.util.*;
 
 public class Pessoa {
-	private String nome;
-	private String dataNascimento;
-	private String cpf;
-	private String telefone;
-	private String rua;
-	private String bairro;
-	private String cidade;
-	private String estado;
+	protected String nome;
+	protected String dataNascimento;
+	protected long cpf;
+	protected String telefone;
+	protected String rua;
+	protected String bairro;
+	protected String cidade;
+	protected String estado;
 	
-	public Pessoa(String nome, String data, long cpf, String contato) {
+	public Pessoa(String nome, String data, long cpf, String telefone, String bairro, String cidade, String estado) {
+		this.nome = nome;
+		this.dataNascimento = data;
+		this.cpf = cpf;
+		this.telefone = telefone;
+		this.bairro = bairro;
+		this.cidade = cidade;
+		this.estado = estado;
+	}
+
+	public Pessoa() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -28,11 +38,11 @@ public class Pessoa {
 		this.nome = nome;
 	}
 
-	public String getCpf() {
+	public long getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(String cpf) {
+	public void setCpf(long cpf) {
 		this.cpf = cpf;
 	}
 

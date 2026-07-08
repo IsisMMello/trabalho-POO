@@ -12,7 +12,7 @@ public class Aluno extends Pessoa{
         this.periodo = 0;
     }
 
-    public Aluno(long matricula, int periodo) {
+    public Aluno(String matricula, int periodo) {
         this.matricula = matricula;
         this.periodo = periodo;
     }
