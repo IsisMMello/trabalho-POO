@@ -175,6 +175,33 @@ LOCK TABLES `Usuario` WRITE;
 /*!40000 ALTER TABLE `Usuario` DISABLE KEYS */;
 /*!40000 ALTER TABLE `Usuario` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `Professor`
+--
+
+DROP TABLE IF EXISTS `Professor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Professor` (
+  `CPF_Pessoa` varchar(11) NOT NULL,
+  `SalarioBruto` decimal(10,2) DEFAULT NULL,
+  `DataAdmissao` varchar(20) DEFAULT NULL,
+  `CargoChefia` tinyint(1) DEFAULT '0',
+  `CargoCoordenacao` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`CPF_Pessoa`),
+  CONSTRAINT `Professor_ibfk_1` FOREIGN KEY (`CPF_Pessoa`) REFERENCES `Pessoa` (`CPF`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Professor`
+--
+
+LOCK TABLES `Professor` WRITE;
+/*!40000 ALTER TABLE `Professor` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Professor` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
