@@ -11,6 +11,9 @@ public class Pessoa {
 	protected String cidade;
 	protected String estado;
 	
+	public Pessoa(){
+	}
+	
 	public Pessoa(String nome, String data, long cpf, String telefone, String bairro, String cidade, String estado) {
 		this.nome = nome;
 		this.dataNascimento = data;
@@ -21,14 +24,27 @@ public class Pessoa {
 		this.estado = estado;
 	}
 
-	public Pessoa() {
-		// TODO Auto-generated constructor stub
-	}
+	public Pessoa(String nome, String dataNascimento, long cpf, String telefone, String rua, String bairro, String cidade, String estado) {
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.rua = rua;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.estado = estado;
+    }
 
-	public void SetDados(String nome2, String data, long cpf2, String contato) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void setDados(String nome, String dataNascimento, long cpf, String telefone, String rua, String bairro, String cidade, String estado) {
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.rua = rua;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.estado = estado;
+    }
 
 	public String getNome() {
 		return nome;
@@ -52,5 +68,25 @@ public class Pessoa {
 
 	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
+	}
+	
+	public String getTelefone() {
+		return this.telefone;
+	}
+	
+	public String getCidade() {
+		return this.cidade;
+	}
+	
+	public String getBairro() {
+		return this.bairro;
+	}
+	
+	public String getRua() {
+		return this.rua;
+	}
+	
+	public String getEstado() {
+		return this.estado;
 	}
 }
