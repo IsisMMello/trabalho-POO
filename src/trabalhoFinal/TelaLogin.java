@@ -56,7 +56,7 @@ public class TelaLogin extends JFrame {
         // Lógica de verificação no Banco de Dados
         try {
             // ATENÇÃO: Ajuste a senha abaixo para a mesma do seu db.properties ou banco local
-            Connection conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/ementor", "root", "09022006");
+            Connection conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/ementor", "ementor_app", "1234");
             
             String sql = "SELECT * FROM Usuario WHERE NomeUsuario = ? AND Senha = ?";
             PreparedStatement stmt = conexao.prepareStatement(sql);
