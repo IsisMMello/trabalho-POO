@@ -11,78 +11,97 @@ public class TelaLancarNotas extends JFrame {
     private JButton btnBuscar, btnSalvarNota, btnVoltar;
 
     public TelaLancarNotas() {
+    	getContentPane().setBackground(new Color(61, 73, 119));
         setTitle("Lançamento de Notas no Vetor");
         setSize(450, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setLayout(new GridLayout(5, 2, 10, 10));
+        getContentPane().setLayout(new GridLayout(5, 2, 10, 10));
 
-        add(new JLabel("  Matrícula do Aluno:"));
+        JLabel label = new JLabel("  Matrícula do Aluno:");
+        label.setHorizontalAlignment(SwingConstants.RIGHT);
+        label.setForeground(new Color(255, 255, 255));
+        getContentPane().add(label);
         txtMatricula = new JTextField();
-        add(txtMatricula);
+        txtMatricula.setBackground(new Color(119, 118, 123));
+        getContentPane().add(txtMatricula);
+        getContentPane().add(new JLabel("")); // Espaço para manter o alinhamento do grid
+        
+                btnBuscar = new JButton("Buscar Aluno");
+                btnBuscar.setBackground(new Color(209, 179, 111));
+                btnBuscar.setForeground(new Color(0, 0, 0));
+                getContentPane().add(btnBuscar);
+                
+                        // Lógica de Busca
+                        btnBuscar.addActionListener(e -> {
+                            String matricula = txtMatricula.getText().trim();
+                            
+                            if (matricula.isEmpty()) {
+                                JOptionPane.showMessageDialog(this, "Por favor, insira a matrícula do aluno.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                                return;
+                            }
+                
+                            try {
+                                ConectorBanco conector = new ConectorBanco();
+                                Connection conexao = conector.conectar();
+                                
+                                String sql = "SELECT Matricula FROM Aluno WHERE Matricula = ?";
+                                PreparedStatement stmt = conexao.prepareStatement(sql);
+                                stmt.setString(1, matricula);
+                                
+                                ResultSet rs = stmt.executeQuery();
+                
+                                if (rs.next()) {
+                                    String matriculaEncontrada = rs.getString("Matricula");
+                                    if (matriculaEncontrada.equals(matricula)) {
+                                        JOptionPane.showMessageDialog(this, "Aluno Vinculado Encontrado com Sucesso!");
+                                        txtPosicao.requestFocus(); 
+                                    } else {
+                                        JOptionPane.showMessageDialog(this, "Aluno não encontrado no banco de dados.", "Erro", JOptionPane.ERROR_MESSAGE);
+                                    }
+                                } else {
+                                    JOptionPane.showMessageDialog(this, "Aluno não encontrado no banco de dados.", "Erro", JOptionPane.ERROR_MESSAGE);
+                                }
+                                
+                                rs.close();
+                                stmt.close();
+                                conexao.close();
+                            } catch (Exception ex) {
+                                JOptionPane.showMessageDialog(this, "Erro ao buscar aluno: " + ex.getMessage());
+                            }
+                        });
 
-        btnBuscar = new JButton("Buscar Aluno");
-        add(btnBuscar);
-        add(new JLabel("")); // Espaço para manter o alinhamento do grid
-
-        add(new JLabel("  Posição do Vetor (0-9):"));
+        JLabel label_1 = new JLabel("  Nota número:");
+        label_1.setHorizontalAlignment(SwingConstants.RIGHT);
+        label_1.setForeground(new Color(255, 255, 255));
+        getContentPane().add(label_1);
         txtPosicao = new JTextField();
-        add(txtPosicao);
+        txtPosicao.setBackground(new Color(119, 118, 123));
+        getContentPane().add(txtPosicao);
 
-        add(new JLabel("  Valor da Nota (Ex: 8.5):"));
+        JLabel label_2 = new JLabel("  Nota (Ex: 8.5):");
+        label_2.setHorizontalAlignment(SwingConstants.RIGHT);
+        label_2.setForeground(new Color(255, 255, 255));
+        getContentPane().add(label_2);
         txtNota = new JTextField();
-        add(txtNota);
+        txtNota.setBackground(new Color(119, 118, 123));
+        getContentPane().add(txtNota);
 
         btnVoltar = new JButton("Voltar ao Menu");
+        btnVoltar.setBackground(new Color(209, 179, 111));
+        btnVoltar.setForeground(new Color(0, 0, 0));
         btnSalvarNota = new JButton("Gravar Nota");
-        add(btnVoltar);
-        add(btnSalvarNota);
+        btnSalvarNota.setBackground(new Color(209, 179, 111));
+        btnSalvarNota.setForeground(new Color(0, 0, 0));
+        getContentPane().add(btnVoltar);
+        getContentPane().add(btnSalvarNota);
 
         btnVoltar.addActionListener(e -> {
             new MenuPrincipal().setVisible(true);
             this.dispose();
         });
 
-        // Lógica de Busca com Validação Rigorosa
-        btnBuscar.addActionListener(e -> {
-            String matricula = txtMatricula.getText().trim();
-            
-            if (matricula.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Por favor, insira a matrícula do aluno.", "Aviso", JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-
-            try {
-                ConectorBanco conector = new ConectorBanco();
-                Connection conexao = conector.conectar();
-                
-                String sql = "SELECT Matricula FROM Aluno WHERE Matricula = ?";
-                PreparedStatement stmt = conexao.prepareStatement(sql);
-                stmt.setString(1, matricula);
-                
-                ResultSet rs = stmt.executeQuery();
-
-                if (rs.next()) {
-                    String matriculaEncontrada = rs.getString("Matricula");
-                    if (matriculaEncontrada.equals(matricula)) {
-                        JOptionPane.showMessageDialog(this, "Aluno Vinculado Encontrado com Sucesso!");
-                        txtPosicao.requestFocus(); 
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Aluno não encontrado no banco de dados.", "Erro", JOptionPane.ERROR_MESSAGE);
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(this, "Aluno não encontrado no banco de dados.", "Erro", JOptionPane.ERROR_MESSAGE);
-                }
-                
-                rs.close();
-                stmt.close();
-                conexao.close();
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "Erro ao buscar aluno: " + ex.getMessage());
-            }
-        });
-
-        // Lógica para Gravar a Nota
+        //Gravar a Nota
         btnSalvarNota.addActionListener(e -> {
             String matricula = txtMatricula.getText().trim();
             String posicaoStr = txtPosicao.getText().trim();

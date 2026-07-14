@@ -18,11 +18,13 @@ public class TelaListagem extends JFrame {
         setSize(650, 450);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setLayout(new BorderLayout());
+        getContentPane().setLayout(new BorderLayout());
 
         // Botão Voltar 
         JButton btnVoltar = new JButton("Voltar ao Menu");
-        add(btnVoltar, BorderLayout.NORTH);
+        btnVoltar.setForeground(new Color(0, 0, 0));
+        btnVoltar.setBackground(new Color(209, 179, 111));
+        getContentPane().add(btnVoltar, BorderLayout.NORTH);
         btnVoltar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -31,7 +33,7 @@ public class TelaListagem extends JFrame {
             }
         });
 
-        // Configuração dos Modelos (As colunas de cada tabela)
+        // Configuração das colunas de cada tabela
         modeloAlunos = new DefaultTableModel(new String[]{"Matrícula", "Nome do Aluno", "Período"}, 0);
         tabelaAlunos = new JTable(modeloAlunos);
 
@@ -41,13 +43,15 @@ public class TelaListagem extends JFrame {
         modeloProfessores = new DefaultTableModel(new String[]{"CPF", "Nome do Professor", "Salário Bruto (R$)"}, 0);
         tabelaProfessores = new JTable(modeloProfessores);
 
-        // Organizando as 3 tabelas em abas (JTabbedPane)
+        // Organizando as 3 tabelas em abas
         JTabbedPane abas = new JTabbedPane();
+        abas.setForeground(new Color(255, 255, 255));
+        abas.setBackground(new Color(61, 73, 119));
         abas.addTab("Lista de Alunos", new JScrollPane(tabelaAlunos));
         abas.addTab("Lista de Egressos", new JScrollPane(tabelaEgressos));
         abas.addTab("Lista de Professores", new JScrollPane(tabelaProfessores));
 
-        add(abas, BorderLayout.CENTER);
+        getContentPane().add(abas, BorderLayout.CENTER);
 
         // Dispara as consultas ao banco assim que a tela é desenhada
         carregarAlunos();
@@ -96,7 +100,7 @@ public class TelaListagem extends JFrame {
             }
             conexao.close();
         } catch (Exception e) {
-            // Se a tabela Egressos não tiver sido criada no seu MySQL ainda, ele ignora silenciosamente
+            // Se a tabela Egressos não tiver sido criada ainda
             System.out.println("Tabela Egressos vazia ou não criada no MySQL: " + e.getMessage());
         }
     }
@@ -116,7 +120,7 @@ public class TelaListagem extends JFrame {
             }
             conexao.close();
         } catch (Exception e) {
-            // Se a tabela Professor não tiver sido criada no seu MySQL ainda, ele ignora silenciosamente
+            // Se a tabela Professor não tiver sido criada ainda
             System.out.println("Tabela Professor vazia ou não criada no MySQL: " + e.getMessage());
         }
     }
