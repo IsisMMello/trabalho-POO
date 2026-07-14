@@ -40,9 +40,12 @@ public class Professor extends Pessoa {
 
     public double calcularSalarioLiquido() {
         double bruto = calcularSalarioBrutoTotal();
-        double inss = bruto * 0.14;
-        double irpf = (bruto >= 5000.0) ? bruto * 0.225 : 0.0;
-        return bruto - inss - irpf;
+        if (bruto <= 5000) {
+            double inss = bruto * 0.14;
+            return bruto - inss;
+        }
+        double irpf = bruto * 0.225;
+        return bruto - irpf;
     }
 
     public void imprimeDados() {

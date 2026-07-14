@@ -36,7 +36,7 @@ public class MenuPrincipal extends JFrame {
 
         // Ações dos botões
         btnCadastro.addActionListener(e -> {
-            new TelaCadastro().setVisible(true);
+            new TelaLogin().setVisible(true);
             this.dispose();
         });
 
