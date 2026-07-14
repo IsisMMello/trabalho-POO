@@ -41,7 +41,6 @@ CREATE TABLE `Aluno` (
 
 LOCK TABLES `Aluno` WRITE;
 /*!40000 ALTER TABLE `Aluno` DISABLE KEYS */;
-INSERT INTO `Aluno` VALUES ('1','11111111',1,1),('2','2',2,1);
 /*!40000 ALTER TABLE `Aluno` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -69,7 +68,6 @@ CREATE TABLE `Egresso` (
 
 LOCK TABLES `Egresso` WRITE;
 /*!40000 ALTER TABLE `Egresso` DISABLE KEYS */;
-INSERT INTO `Egresso` VALUES ('1','dev',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `Egresso` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -127,7 +125,6 @@ CREATE TABLE `Pessoa` (
 
 LOCK TABLES `Pessoa` WRITE;
 /*!40000 ALTER TABLE `Pessoa` DISABLE KEYS */;
-INSERT INTO `Pessoa` VALUES ('11111','maria','1977-09-02','444','rua','bairro','cidade','es'),('11111111','isis','2005-08-08','1','rua','bairro','cidade','es'),('1111111111','eduardo','2006-02-09','111111','rua','bairro','cidade','es'),('2','eduardo','2006-02-09','7','rua','bairro','cidade','es');
 /*!40000 ALTER TABLE `Pessoa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -155,7 +152,6 @@ CREATE TABLE `Professor` (
 
 LOCK TABLES `Professor` WRITE;
 /*!40000 ALTER TABLE `Professor` DISABLE KEYS */;
-INSERT INTO `Professor` VALUES ('11111',NULL,NULL,NULL,11000.00);
 /*!40000 ALTER TABLE `Professor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -179,7 +175,6 @@ CREATE TABLE `Turma` (
 
 LOCK TABLES `Turma` WRITE;
 /*!40000 ALTER TABLE `Turma` DISABLE KEYS */;
-INSERT INTO `Turma` VALUES (1,'Programação Orientada a Objetos');
 /*!40000 ALTER TABLE `Turma` ENABLE KEYS */;
 UNLOCK TABLES;
 

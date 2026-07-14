@@ -49,19 +49,19 @@ public class TelaCadastro extends JFrame {
 
         JTextField txtMatricula = new JTextField(); 
         txtMatricula.setBackground(new Color(241, 233, 209));JTextField txtCpf = new JTextField(); 
-txtCpf.setBackground(new Color(241, 233, 209));
+        txtCpf.setBackground(new Color(241, 233, 209));
         JTextField txtNome = new JTextField(); 
         txtNome.setBackground(new Color(241, 233, 209));JTextField txtData = new JTextField(); 
-txtData.setBackground(new Color(241, 233, 209));
+        txtData.setBackground(new Color(241, 233, 209));
         JTextField txtTelefone = new JTextField(); 
         txtTelefone.setBackground(new Color(241, 233, 209));JTextField txtPeriodo = new JTextField();
-txtPeriodo.setBackground(new Color(241, 233, 209));
+        txtPeriodo.setBackground(new Color(241, 233, 209));
         JTextField txtTurma = new JTextField(); 
         txtTurma.setBackground(new Color(241, 233, 209));JTextField txtRua = new JTextField();
-txtRua.setBackground(new Color(241, 233, 209));
+        txtRua.setBackground(new Color(241, 233, 209));
         JTextField txtBairro = new JTextField(); 
         txtBairro.setBackground(new Color(241, 233, 209));JTextField txtCidade = new JTextField();
-txtCidade.setBackground(new Color(241, 233, 209));
+        txtCidade.setBackground(new Color(241, 233, 209));
         JTextField txtEstado = new JTextField();
         txtEstado.setBackground(new Color(241, 233, 209));
 
@@ -101,13 +101,22 @@ txtCidade.setBackground(new Color(241, 233, 209));
 
         JPanel painelBotoes = new JPanel();
         painelBotoes.setBackground(new Color(46, 56, 95));
+        
         JButton btnBuscar = new JButton("Buscar");
         btnBuscar.setForeground(new Color(0, 0, 0));
         btnBuscar.setBackground(new Color(209, 179, 111));
+        
         JButton btnSalvar = new JButton("Salvar");
         btnSalvar.setForeground(new Color(0, 0, 0));
         btnSalvar.setBackground(new Color(209, 179, 111));
-        painelBotoes.add(btnBuscar); painelBotoes.add(btnSalvar);
+        
+        JButton btnExcluir = new JButton("Excluir");
+        btnExcluir.setForeground(new Color(0, 0, 0));
+        btnExcluir.setBackground(new Color(255, 100, 100)); // Cor avermelhada para destaque
+        
+        painelBotoes.add(btnBuscar); 
+        painelBotoes.add(btnSalvar);
+        painelBotoes.add(btnExcluir);
 
         painelBase.add(painelCampos, BorderLayout.CENTER);
         painelBase.add(painelBotoes, BorderLayout.SOUTH);
@@ -145,6 +154,16 @@ txtCidade.setBackground(new Color(241, 233, 209));
             }
             processarDados("Aluno", txtCpf.getText(), txtNome.getText(), txtData.getText(), txtTelefone.getText(), txtRua.getText(), txtBairro.getText(), txtCidade.getText(), txtEstado.getText(), txtMatricula.getText(), txtPeriodo.getText(), txtTurma.getText(), null, null, null, false, false);
         });
+        
+        btnExcluir.addActionListener(e -> {
+            String pkExcluir = txtMatricula.getText().trim();
+            if(pkExcluir.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Informe a Matrícula para excluir.");
+                return;
+            }
+            processarExclusao("Aluno", pkExcluir);
+        });
+        
         return painelBase;
     }
 
@@ -225,9 +244,14 @@ txtCidade.setBackground(new Color(241, 233, 209));
         JButton btnSalvar = new JButton("Salvar");
         btnSalvar.setForeground(Color.BLACK);
         btnSalvar.setBackground(new Color(209, 179, 111));
+        
+        JButton btnExcluir = new JButton("Excluir");
+        btnExcluir.setForeground(Color.BLACK);
+        btnExcluir.setBackground(new Color(255, 100, 100));
 
         painelBotoes.add(btnBuscar);
         painelBotoes.add(btnSalvar);
+        painelBotoes.add(btnExcluir);
 
         painelBase.add(painelCampos, BorderLayout.CENTER);
         painelBase.add(painelBotoes, BorderLayout.SOUTH);
@@ -305,6 +329,15 @@ txtCidade.setBackground(new Color(241, 233, 209));
                     null,
                     false,
                     false);
+        });
+        
+        btnExcluir.addActionListener(e -> {
+            String pkExcluir = txtMatricula.getText().trim();
+            if(pkExcluir.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Informe a Matrícula para excluir.");
+                return;
+            }
+            processarExclusao("Egresso", pkExcluir);
         });
 
         return painelBase;
@@ -434,9 +467,14 @@ txtCidade.setBackground(new Color(241, 233, 209));
         JButton btnSalvar = new JButton("Salvar");
         btnSalvar.setForeground(Color.BLACK);
         btnSalvar.setBackground(new Color(209, 179, 111));
+        
+        JButton btnExcluir = new JButton("Excluir");
+        btnExcluir.setForeground(Color.BLACK);
+        btnExcluir.setBackground(new Color(255, 100, 100));
 
         painelBotoes.add(btnBuscar);
         painelBotoes.add(btnSalvar);
+        painelBotoes.add(btnExcluir);
 
         painelBase.add(painelCampos, BorderLayout.CENTER);
         painelBase.add(painelBotoes, BorderLayout.SOUTH);
@@ -593,6 +631,15 @@ txtCidade.setBackground(new Color(241, 233, 209));
                     chkCargoCoordenacao.isSelected()
             );
         });
+        
+        btnExcluir.addActionListener(e -> {
+            String pkExcluir = txtCpf.getText().trim();
+            if(pkExcluir.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Informe o CPF para excluir.");
+                return;
+            }
+            processarExclusao("Professor", pkExcluir);
+        });
 
         return painelBase;
     }
@@ -663,9 +710,14 @@ txtCidade.setBackground(new Color(241, 233, 209));
         JButton btnSalvar = new JButton("Salvar");
         btnSalvar.setForeground(Color.BLACK);
         btnSalvar.setBackground(new Color(209, 179, 111));
+        
+        JButton btnExcluir = new JButton("Excluir");
+        btnExcluir.setForeground(Color.BLACK);
+        btnExcluir.setBackground(new Color(255, 100, 100));
 
         painelBotoes.add(btnBuscar);
         painelBotoes.add(btnSalvar);
+        painelBotoes.add(btnExcluir);
 
         painelBase.add(painelCampos, BorderLayout.CENTER);
         painelBase.add(painelBotoes, BorderLayout.SOUTH);
@@ -732,6 +784,15 @@ txtCidade.setBackground(new Color(241, 233, 209));
                     txtCodigo.getText(),
                     txtNomeTurma.getText()
             );
+        });
+        
+        btnExcluir.addActionListener(e -> {
+            String pkExcluir = txtCodigo.getText().trim();
+            if(pkExcluir.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Informe o Código da Turma para excluir.");
+                return;
+            }
+            processarExclusao("Turma", pkExcluir);
         });
 
         return painelBase;
@@ -897,6 +958,56 @@ txtCidade.setBackground(new Color(241, 233, 209));
                 SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(this, "Turma salva/alterada com sucesso!"));
             } catch (Exception ex) {
                 SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(this, "Erro: " + ex.getMessage()));
+            }
+        }).start();
+    }
+    
+    // MÉTODO NOVO: LÓGICA DE EXCLUSÃO (DELETE)
+    private void processarExclusao(String tipo, String pk) {
+        int confirmacao = JOptionPane.showConfirmDialog(
+            this, 
+            "Tem certeza que deseja excluir este " + tipo + " permanentemente?", 
+            "Confirmar Exclusão", 
+            JOptionPane.YES_NO_OPTION
+        );
+        
+        if (confirmacao != JOptionPane.YES_OPTION) {
+            return; // Cancela se o usuário clicar em "Não"
+        }
+
+        new Thread(() -> {
+            try {
+                Connection conexao = new ConectorBanco().conectar();
+                PreparedStatement del = null;
+                
+                // Define qual tabela será apagada baseada na aba ativa
+                if (tipo.equals("Aluno")) {
+                    del = conexao.prepareStatement("DELETE FROM Aluno WHERE Matricula = ?");
+                    del.setString(1, pk);
+                } else if (tipo.equals("Professor")) {
+                    del = conexao.prepareStatement("DELETE FROM Professor WHERE CPF_Pessoa = ?");
+                    del.setString(1, pk);
+                } else if (tipo.equals("Egresso")) {
+                    del = conexao.prepareStatement("DELETE FROM Egresso WHERE Matricula_Aluno = ?");
+                    del.setString(1, pk);
+                } else if (tipo.equals("Turma")) {
+                    del = conexao.prepareStatement("DELETE FROM Turma WHERE CodigoTurma = ?");
+                    del.setInt(1, Integer.parseInt(pk));
+                }
+
+                if (del != null) {
+                    int linhasAfetadas = del.executeUpdate();
+                    if (linhasAfetadas > 0) {
+                        SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(this, tipo + " excluído com sucesso!"));
+                    } else {
+                        SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(this, "Nenhum registro encontrado para exclusão com essa chave."));
+                    }
+                    del.close();
+                }
+                conexao.close();
+            } catch (Exception ex) {
+            	// Se o MySQL bloquear a exclusão por Foreign Key (Ex: apagar um aluno que tem notas cadastradas)
+                SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(this, "Erro ao excluir (Pode haver dependências vinculadas no banco):\n" + ex.getMessage()));
             }
         }).start();
     }

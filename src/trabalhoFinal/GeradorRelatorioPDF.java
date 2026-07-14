@@ -226,11 +226,8 @@ public class GeradorRelatorioPDF {
             tabela.addCell(criarCelula(FORMATO_MOEDA.format(prof.getSalarioBruto()), FONTE_CELULA, corFundo, Element.ALIGN_RIGHT, 5f));
             tabela.addCell(criarCelula(FORMATO_MOEDA.format(prof.calcularSalarioBrutoTotal()), FONTE_CELULA, corFundo, Element.ALIGN_RIGHT, 5f));
             
-            double brutoTotal = prof.calcularSalarioBrutoTotal();
-            double inss = brutoTotal * 0.14;
-            double irpf = (brutoTotal >= 5000.0) ? brutoTotal * 0.225 : 0.0;
-            double liquidoReal = brutoTotal - inss - irpf;
-            tabela.addCell(criarCelula(FORMATO_MOEDA.format(liquidoReal), FONTE_CELULA_NEGRITO, corFundo, Element.ALIGN_RIGHT, 5f));
+         
+            tabela.addCell(criarCelula(FORMATO_MOEDA.format(prof.calcularSalarioLiquido()), FONTE_CELULA_NEGRITO, corFundo, Element.ALIGN_RIGHT, 5f));
         }
 
         document.add(tabela);
