@@ -14,6 +14,7 @@ public class TelaListagem extends JFrame {
     private DefaultTableModel modeloAlunos, modeloEgressos, modeloProfessores;
 
     public TelaListagem() {
+    	setBackground(new Color(241, 233, 209));
         setTitle("Listagem de Cadastros - Sistema eMentor");
         setSize(650, 450);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -47,6 +47,7 @@ public class TelaLogin extends JFrame {
     private JButton botaoEntrar;
 
     public TelaLogin() {
+    	setBackground(new Color(241, 233, 209));
         configurarJanela();
         criarInterface();
         configurarEventos();
@@ -142,7 +143,7 @@ public class TelaLogin extends JFrame {
                 )
         );
 
-        painelExterno.setBackground(FUNDO);
+        painelExterno.setBackground(new Color(241, 233, 209));
 
         JPanel formulario = new JPanel();
 

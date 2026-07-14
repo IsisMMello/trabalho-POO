@@ -10,6 +10,7 @@ public class TelaCadastro extends JFrame {
     private JProgressBar barraProgresso;
 
     public TelaCadastro() {
+    	setBackground(new Color(241, 233, 209));
         setTitle("Central de Cadastros e Edição - eMentor");
         setSize(700, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -26,6 +27,7 @@ public class TelaCadastro extends JFrame {
         });
 
         barraProgresso = new JProgressBar(0, 100);
+        barraProgresso.setBackground(new Color(241, 233, 209));
         barraProgresso.setStringPainted(true);
         getContentPane().add(barraProgresso, BorderLayout.SOUTH);
 
@@ -46,22 +48,22 @@ public class TelaCadastro extends JFrame {
         painelCampos.setBackground(new Color(46, 56, 95));
 
         JTextField txtMatricula = new JTextField(); 
-        txtMatricula.setBackground(new Color(154, 153, 150));JTextField txtCpf = new JTextField(); 
-txtCpf.setBackground(new Color(154, 153, 150));
+        txtMatricula.setBackground(new Color(241, 233, 209));JTextField txtCpf = new JTextField(); 
+txtCpf.setBackground(new Color(241, 233, 209));
         JTextField txtNome = new JTextField(); 
-        txtNome.setBackground(new Color(154, 153, 150));JTextField txtData = new JTextField(); 
-txtData.setBackground(new Color(154, 153, 150));
+        txtNome.setBackground(new Color(241, 233, 209));JTextField txtData = new JTextField(); 
+txtData.setBackground(new Color(241, 233, 209));
         JTextField txtTelefone = new JTextField(); 
-        txtTelefone.setBackground(new Color(154, 153, 150));JTextField txtPeriodo = new JTextField();
-txtPeriodo.setBackground(new Color(154, 153, 150));
+        txtTelefone.setBackground(new Color(241, 233, 209));JTextField txtPeriodo = new JTextField();
+txtPeriodo.setBackground(new Color(241, 233, 209));
         JTextField txtTurma = new JTextField(); 
-        txtTurma.setBackground(new Color(154, 153, 150));JTextField txtRua = new JTextField();
-txtRua.setBackground(new Color(154, 153, 150));
+        txtTurma.setBackground(new Color(241, 233, 209));JTextField txtRua = new JTextField();
+txtRua.setBackground(new Color(241, 233, 209));
         JTextField txtBairro = new JTextField(); 
-        txtBairro.setBackground(new Color(154, 153, 150));JTextField txtCidade = new JTextField();
-txtCidade.setBackground(new Color(154, 153, 150));
+        txtBairro.setBackground(new Color(241, 233, 209));JTextField txtCidade = new JTextField();
+txtCidade.setBackground(new Color(241, 233, 209));
         JTextField txtEstado = new JTextField();
-        txtEstado.setBackground(new Color(154, 153, 150));
+        txtEstado.setBackground(new Color(241, 233, 209));
 
         JLabel label = new JLabel("  Matrícula:");
         label.setForeground(new Color(255, 255, 255));
@@ -141,7 +143,7 @@ txtCidade.setBackground(new Color(154, 153, 150));
             if (txtEstado.getText().length() > 2) {
                 JOptionPane.showMessageDialog(this, "Erro: O Estado deve conter apenas 2 letras."); return;
             }
-            processarDados("Aluno", txtCpf.getText(), txtNome.getText(), txtData.getText(), txtTelefone.getText(), txtRua.getText(), txtBairro.getText(), txtCidade.getText(), txtEstado.getText(), txtMatricula.getText(), txtPeriodo.getText(), txtTurma.getText(), null, null);
+            processarDados("Aluno", txtCpf.getText(), txtNome.getText(), txtData.getText(), txtTelefone.getText(), txtRua.getText(), txtBairro.getText(), txtCidade.getText(), txtEstado.getText(), txtMatricula.getText(), txtPeriodo.getText(), txtTurma.getText(), null, null, null, false, false);
         });
         return painelBase;
     }
@@ -159,13 +161,13 @@ txtCidade.setBackground(new Color(154, 153, 150));
         painelCampos.setBackground(new Color(61, 73, 119));
 
         JTextField txtMatricula = new JTextField();
-        txtMatricula.setBackground(new Color(154, 153, 150));
+        txtMatricula.setBackground(new Color(241, 233, 209));
 
         JTextField txtCpf = new JTextField();
-        txtCpf.setBackground(new Color(154, 153, 150));
+        txtCpf.setBackground(new Color(241, 233, 209));
 
         JTextField txtProfissao = new JTextField();
-        txtProfissao.setBackground(new Color(154, 153, 150));
+        txtProfissao.setBackground(new Color(241, 233, 209));
 
         JLabel labelMatricula = new JLabel("  Matrícula:");
         labelMatricula.setForeground(Color.WHITE);
@@ -299,107 +301,299 @@ txtCidade.setBackground(new Color(154, 153, 150));
                     null,
                     null,
                     null,
-                    txtProfissao.getText()
-            );
+                    txtProfissao.getText(),
+                    null,
+                    false,
+                    false);
         });
 
         return painelBase;
     }
 
-    // ABA 3: PROFESSORES (Busca estrita pela PK: CPF_Pessoa)
+ // ABA 3: PROFESSORES (Busca estrita pela PK: CPF_Pessoa)
 
     private JPanel criarAbaProfessor() {
+
         JPanel painelBase = new JPanel(new BorderLayout());
-        JPanel painelCampos = new JPanel(new GridLayout(9, 2, 5, 5));
+
+        // Agora existem 12 campos/linhas
+        JPanel painelCampos = new JPanel(
+                new GridLayout(12, 2, 5, 5)
+        );
+
         painelCampos.setBackground(new Color(61, 73, 119));
 
-        JTextField txtCpf = new JTextField(); 
-        txtCpf.setBackground(new Color(154, 153, 150));JTextField txtNome = new JTextField();
-txtNome.setBackground(new Color(154, 153, 150));
-        JTextField txtData = new JTextField(); 
-        txtData.setBackground(new Color(154, 153, 150));JTextField txtTelefone = new JTextField();
- txtTelefone.setBackground(new Color(154, 153, 150));
-        JTextField txtSalario = new JTextField(); 
-        txtSalario.setBackground(new Color(154, 153, 150));JTextField txtRua = new JTextField();
- txtRua.setBackground(new Color(154, 153, 150));
-        JTextField txtBairro = new JTextField(); 
-        txtBairro.setBackground(new Color(154, 153, 150));JTextField txtCidade = new JTextField();
- txtCidade.setBackground(new Color(154, 153, 150));
-        JTextField txtEstado = new JTextField();
-        txtEstado.setBackground(new Color(154, 153, 150));
+        JTextField txtCpf = new JTextField();
+        txtCpf.setBackground(new Color(241, 233, 209));
 
-        JLabel label_8 = new JLabel("  CPF:");
-        label_8.setForeground(new Color(255, 255, 255));
-        painelCampos.add(label_8); painelCampos.add(txtCpf);
-        JLabel label_7 = new JLabel("  Nome:");
-        label_7.setForeground(new Color(255, 255, 255));
-        painelCampos.add(label_7); painelCampos.add(txtNome);
-        JLabel label_6 = new JLabel("  Nascimento:");
-        label_6.setForeground(new Color(255, 255, 255));
-        painelCampos.add(label_6); painelCampos.add(txtData);
-        JLabel label_5 = new JLabel("  Telefone:");
-        label_5.setForeground(new Color(255, 255, 255));
-        painelCampos.add(label_5); painelCampos.add(txtTelefone);
-        JLabel label_4 = new JLabel("  Salário Bruto:");
-        label_4.setForeground(new Color(255, 255, 255));
-        painelCampos.add(label_4); painelCampos.add(txtSalario);
-        JLabel label_3 = new JLabel("  Rua:");
-        label_3.setForeground(new Color(255, 255, 255));
-        painelCampos.add(label_3); painelCampos.add(txtRua);
-        JLabel label_2 = new JLabel("  Bairro:");
-        label_2.setForeground(new Color(255, 255, 255));
-        painelCampos.add(label_2); painelCampos.add(txtBairro);
-        JLabel label_1 = new JLabel("  Cidade:");
-        label_1.setForeground(new Color(255, 255, 255));
-        painelCampos.add(label_1); painelCampos.add(txtCidade);
-        JLabel label = new JLabel("  Estado (UF):");
-        label.setForeground(new Color(255, 255, 255));
-        painelCampos.add(label); painelCampos.add(txtEstado);
+        JTextField txtNome = new JTextField();
+        txtNome.setBackground(new Color(241, 233, 209));
+
+        JTextField txtData = new JTextField();
+        txtData.setBackground(new Color(241, 233, 209));
+
+        JTextField txtTelefone = new JTextField();
+        txtTelefone.setBackground(new Color(241, 233, 209));
+
+        JTextField txtSalario = new JTextField();
+        txtSalario.setBackground(new Color(241, 233, 209));
+
+        // Novo campo
+        JTextField txtDataAdmissao = new JTextField();
+        txtDataAdmissao.setBackground(new Color(241, 233, 209));
+
+        // Novos campos booleanos
+        JCheckBox chkCargoChefia = new JCheckBox();
+        chkCargoChefia.setBackground(new Color(61, 73, 119));
+
+        JCheckBox chkCargoCoordenacao = new JCheckBox();
+        chkCargoCoordenacao.setBackground(new Color(61, 73, 119));
+
+        JTextField txtRua = new JTextField();
+        txtRua.setBackground(new Color(241, 233, 209));
+
+        JTextField txtBairro = new JTextField();
+        txtBairro.setBackground(new Color(241, 233, 209));
+
+        JTextField txtCidade = new JTextField();
+        txtCidade.setBackground(new Color(241, 233, 209));
+
+        JTextField txtEstado = new JTextField();
+        txtEstado.setBackground(new Color(241, 233, 209));
+
+        JLabel labelCpf = new JLabel("  CPF:");
+        labelCpf.setForeground(Color.WHITE);
+        painelCampos.add(labelCpf);
+        painelCampos.add(txtCpf);
+
+        JLabel labelNome = new JLabel("  Nome:");
+        labelNome.setForeground(Color.WHITE);
+        painelCampos.add(labelNome);
+        painelCampos.add(txtNome);
+
+        JLabel labelNascimento = new JLabel("  Nascimento:");
+        labelNascimento.setForeground(Color.WHITE);
+        painelCampos.add(labelNascimento);
+        painelCampos.add(txtData);
+
+        JLabel labelTelefone = new JLabel("  Telefone:");
+        labelTelefone.setForeground(Color.WHITE);
+        painelCampos.add(labelTelefone);
+        painelCampos.add(txtTelefone);
+
+        JLabel labelSalario = new JLabel("  Salário Bruto:");
+        labelSalario.setForeground(Color.WHITE);
+        painelCampos.add(labelSalario);
+        painelCampos.add(txtSalario);
+
+        // Novo campo na interface
+        JLabel labelDataAdmissao = new JLabel("  Data de Admissão:");
+        labelDataAdmissao.setForeground(Color.WHITE);
+        painelCampos.add(labelDataAdmissao);
+        painelCampos.add(txtDataAdmissao);
+
+        // Novo campo na interface
+        JLabel labelCargoChefia = new JLabel("  Cargo de Chefia:");
+        labelCargoChefia.setForeground(Color.WHITE);
+        painelCampos.add(labelCargoChefia);
+        painelCampos.add(chkCargoChefia);
+
+        // Novo campo na interface
+        JLabel labelCargoCoordenacao = new JLabel("  Cargo de Coordenação:");
+        labelCargoCoordenacao.setForeground(Color.WHITE);
+        painelCampos.add(labelCargoCoordenacao);
+        painelCampos.add(chkCargoCoordenacao);
+
+        JLabel labelRua = new JLabel("  Rua:");
+        labelRua.setForeground(Color.WHITE);
+        painelCampos.add(labelRua);
+        painelCampos.add(txtRua);
+
+        JLabel labelBairro = new JLabel("  Bairro:");
+        labelBairro.setForeground(Color.WHITE);
+        painelCampos.add(labelBairro);
+        painelCampos.add(txtBairro);
+
+        JLabel labelCidade = new JLabel("  Cidade:");
+        labelCidade.setForeground(Color.WHITE);
+        painelCampos.add(labelCidade);
+        painelCampos.add(txtCidade);
+
+        JLabel labelEstado = new JLabel("  Estado (UF):");
+        labelEstado.setForeground(Color.WHITE);
+        painelCampos.add(labelEstado);
+        painelCampos.add(txtEstado);
 
         JPanel painelBotoes = new JPanel();
         painelBotoes.setBackground(new Color(61, 73, 119));
+
         JButton btnBuscar = new JButton("Buscar");
-        btnBuscar.setForeground(new Color(0, 0, 0));
+        btnBuscar.setForeground(Color.BLACK);
         btnBuscar.setBackground(new Color(209, 179, 111));
+
         JButton btnSalvar = new JButton("Salvar");
-        btnSalvar.setForeground(new Color(0, 0, 0));
+        btnSalvar.setForeground(Color.BLACK);
         btnSalvar.setBackground(new Color(209, 179, 111));
-        painelBotoes.add(btnBuscar); painelBotoes.add(btnSalvar);
+
+        painelBotoes.add(btnBuscar);
+        painelBotoes.add(btnSalvar);
 
         painelBase.add(painelCampos, BorderLayout.CENTER);
         painelBase.add(painelBotoes, BorderLayout.SOUTH);
 
+        // BUSCAR PROFESSOR
         btnBuscar.addActionListener(e -> {
+
             String pkBusca = txtCpf.getText().trim();
-            if(pkBusca.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Informe o CPF para realizar a busca.");
+
+            if (pkBusca.isEmpty()) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Informe o CPF para realizar a busca."
+                );
                 return;
             }
+
             try {
                 Connection con = new ConectorBanco().conectar();
-                String sql = "SELECT p.*, pr.SalarioBruto FROM Pessoa p JOIN Professor pr ON p.CPF = pr.CPF_Pessoa WHERE pr.CPF_Pessoa = ?";
+
+                String sql =
+                        "SELECT p.*, "
+                        + "pr.SalarioBruto, "
+                        + "pr.DataAdmissao, "
+                        + "pr.CargoChefia, "
+                        + "pr.CargoCoordenacao "
+                        + "FROM Pessoa p "
+                        + "JOIN Professor pr "
+                        + "ON p.CPF = pr.CPF_Pessoa "
+                        + "WHERE pr.CPF_Pessoa = ?";
+
                 PreparedStatement stmt = con.prepareStatement(sql);
                 stmt.setString(1, pkBusca);
+
                 ResultSet rs = stmt.executeQuery();
-                if(rs.next()) {
-                    txtNome.setText(rs.getString("Nome")); txtData.setText(rs.getString("DataNascimento"));
-                    txtTelefone.setText(rs.getString("Telefone")); txtRua.setText(rs.getString("Rua"));
-                    txtBairro.setText(rs.getString("Bairro")); txtCidade.setText(rs.getString("Cidade"));
-                    txtEstado.setText(rs.getString("Estado")); txtSalario.setText(rs.getString("SalarioBruto"));
-                    JOptionPane.showMessageDialog(this, "Professor encontrado.");
+
+                if (rs.next()) {
+
+                    txtNome.setText(rs.getString("Nome"));
+                    txtData.setText(rs.getString("DataNascimento"));
+                    txtTelefone.setText(rs.getString("Telefone"));
+
+                    txtRua.setText(rs.getString("Rua"));
+                    txtBairro.setText(rs.getString("Bairro"));
+                    txtCidade.setText(rs.getString("Cidade"));
+                    txtEstado.setText(rs.getString("Estado"));
+
+                    txtSalario.setText(
+                            rs.getString("SalarioBruto")
+                    );
+
+                    // Carrega os novos campos
+                    txtDataAdmissao.setText(
+                            rs.getString("DataAdmissao")
+                    );
+
+                    chkCargoChefia.setSelected(
+                            rs.getBoolean("CargoChefia")
+                    );
+
+                    chkCargoCoordenacao.setSelected(
+                            rs.getBoolean("CargoCoordenacao")
+                    );
+
+                    JOptionPane.showMessageDialog(
+                            this,
+                            "Professor encontrado."
+                    );
+
                 } else {
-                    JOptionPane.showMessageDialog(this, "Professor não encontrado com este CPF.");
+                    JOptionPane.showMessageDialog(
+                            this,
+                            "Professor não encontrado com este CPF."
+                    );
                 }
+
+                rs.close();
+                stmt.close();
                 con.close();
-            } catch(Exception ex) { JOptionPane.showMessageDialog(this, "Erro: " + ex.getMessage()); }
+
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Erro: " + ex.getMessage()
+                );
+            }
         });
 
+        // SALVAR OU ALTERAR PROFESSOR
         btnSalvar.addActionListener(e -> {
-            if (txtEstado.getText().length() > 2) {
-                JOptionPane.showMessageDialog(this, "Erro: O Estado deve conter 2 letras."); return;
+
+            String cpf = txtCpf.getText().trim();
+            String salario = txtSalario.getText().trim();
+
+            if (cpf.isEmpty()) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Informe o CPF do professor."
+                );
+                return;
             }
-            processarDados("Professor", txtCpf.getText(), txtNome.getText(), txtData.getText(), txtTelefone.getText(), txtRua.getText(), txtBairro.getText(), txtCidade.getText(), txtEstado.getText(), null, null, null, txtSalario.getText(), null);
+
+            if (cpf.length() != 11) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "O CPF deve possuir exatamente 11 números."
+                );
+                return;
+            }
+
+            if (txtEstado.getText().trim().length() > 2) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Erro: O Estado deve conter no máximo 2 letras."
+                );
+                return;
+            }
+
+            if (salario.isEmpty()) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Informe o salário bruto."
+                );
+                return;
+            }
+
+            try {
+                Double.parseDouble(salario.replace(",", "."));
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "O salário deve ser um valor numérico."
+                );
+                return;
+            }
+
+            processarDados(
+                    "Professor",
+                    cpf,
+                    txtNome.getText(),
+                    txtData.getText(),
+                    txtTelefone.getText(),
+                    txtRua.getText(),
+                    txtBairro.getText(),
+                    txtCidade.getText(),
+                    txtEstado.getText(),
+                    null,
+                    null,
+                    null,
+                    salario,
+                    null,
+                    txtDataAdmissao.getText(),
+                    chkCargoChefia.isSelected(),
+                    chkCargoCoordenacao.isSelected()
+            );
         });
+
         return painelBase;
     }
 
@@ -416,10 +610,10 @@ txtNome.setBackground(new Color(154, 153, 150));
         painelCampos.setBackground(new Color(61, 73, 119));
 
         JTextField txtCodigo = new JTextField();
-        txtCodigo.setBackground(new Color(154, 153, 150));
+        txtCodigo.setBackground(new Color(241, 233, 209));
 
         JTextField txtNomeTurma = new JTextField();
-        txtNomeTurma.setBackground(new Color(154, 153, 150));
+        txtNomeTurma.setBackground(new Color(241, 233, 209));
 
         JLabel labelCodigo = new JLabel("  Turma:");
         labelCodigo.setForeground(Color.WHITE);
@@ -546,7 +740,23 @@ txtNome.setBackground(new Color(154, 153, 150));
 
     // LÓGICA DE PROCESSAMENTO (INSERT/UPDATE DINÂMICO)
 
-    private void processarDados(String tipo, String cpf, String nome, String data, String tel, String rua, String bairro, String cidade, String est, String mat, String per, String tur, String sal, String prof) {
+    private void processarDados(String tipo,
+					            String cpf,
+					            String nome,
+					            String data,
+					            String tel,
+					            String rua,
+					            String bairro,
+					            String cidade,
+					            String est,
+					            String mat,
+					            String per,
+					            String tur,
+					            String sal,
+					            String prof,
+					            String dataAdmissao,
+					            boolean cargoChefia,
+					            boolean cargoCoordenacao) {
         new Thread(() -> {
             try {
                 for (int i = 0; i <= 100; i += 25) {
@@ -585,17 +795,59 @@ txtNome.setBackground(new Color(154, 153, 150));
                         ia.executeUpdate();
                     }
                 } else if (tipo.equals("Professor")) {
-                    PreparedStatement chkp = conexao.prepareStatement("SELECT CPF_Pessoa FROM Professor WHERE CPF_Pessoa = ?");
+                    PreparedStatement chkp = conexao.prepareStatement(
+                            "SELECT CPF_Pessoa "
+                            + "FROM Professor "
+                            + "WHERE CPF_Pessoa = ?"
+                    );
+
                     chkp.setString(1, cpf);
-                    if (chkp.executeQuery().next()) {
-                        PreparedStatement up = conexao.prepareStatement("UPDATE Professor SET SalarioBruto=? WHERE CPF_Pessoa=?");
-                        up.setDouble(1, Double.parseDouble(sal.replace(",", "."))); up.setString(2, cpf);
+
+                    ResultSet resultadoProfessor = chkp.executeQuery();
+
+                    double salarioBruto = Double.parseDouble(
+                            sal.replace(",", ".")
+                    );
+
+                    if (resultadoProfessor.next()) {
+
+                        PreparedStatement up = conexao.prepareStatement(
+                                "UPDATE Professor SET "
+                                + "SalarioBruto = ?, "
+                                + "DataAdmissao = ?, "
+                                + "CargoChefia = ?, "
+                                + "CargoCoordenacao = ? "
+                                + "WHERE CPF_Pessoa = ?"
+                        );
+
+                        up.setDouble(1, salarioBruto);
+                        up.setString(2, dataAdmissao);
+                        up.setBoolean(3, cargoChefia);
+                        up.setBoolean(4, cargoCoordenacao);
+                        up.setString(5, cpf);
+
                         up.executeUpdate();
+                        up.close();
+
                     } else {
-                        PreparedStatement ip = conexao.prepareStatement("INSERT INTO Professor (CPF_Pessoa, SalarioBruto) VALUES (?, ?)");
-                        ip.setString(1, cpf); ip.setDouble(2, Double.parseDouble(sal.replace(",", ".")));
+                        PreparedStatement ip = conexao.prepareStatement(
+                                "INSERT INTO Professor "
+                                + "(CPF_Pessoa, SalarioBruto, DataAdmissao, "
+                                + "CargoChefia, CargoCoordenacao) "
+                                + "VALUES (?, ?, ?, ?, ?)"
+                        );
+
+                        ip.setString(1, cpf);
+                        ip.setDouble(2, salarioBruto);
+                        ip.setString(3, dataAdmissao);
+                        ip.setBoolean(4, cargoChefia);
+                        ip.setBoolean(5, cargoCoordenacao);
+
                         ip.executeUpdate();
+                        ip.close();
                     }
+                    resultadoProfessor.close();
+                    chkp.close();
                 } else if (tipo.equals("Egresso")) {
                     PreparedStatement chke = conexao.prepareStatement("SELECT Matricula_Aluno FROM Egresso WHERE Matricula_Aluno = ?");
                     chke.setString(1, mat);

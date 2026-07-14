@@ -11,6 +11,7 @@ public class TelaLancarNotas extends JFrame {
     private JButton btnBuscar, btnSalvarNota, btnVoltar;
 
     public TelaLancarNotas() {
+    	setBackground(new Color(241, 233, 209));
     	getContentPane().setBackground(new Color(61, 73, 119));
         setTitle("Lançamento de Notas no Vetor");
         setSize(450, 300);
@@ -23,7 +24,7 @@ public class TelaLancarNotas extends JFrame {
         label.setForeground(new Color(255, 255, 255));
         getContentPane().add(label);
         txtMatricula = new JTextField();
-        txtMatricula.setBackground(new Color(119, 118, 123));
+        txtMatricula.setBackground(new Color(241, 233, 209));
         getContentPane().add(txtMatricula);
         getContentPane().add(new JLabel("")); // Espaço para manter o alinhamento do grid
         
@@ -76,7 +77,7 @@ public class TelaLancarNotas extends JFrame {
         label_1.setForeground(new Color(255, 255, 255));
         getContentPane().add(label_1);
         txtPosicao = new JTextField();
-        txtPosicao.setBackground(new Color(119, 118, 123));
+        txtPosicao.setBackground(new Color(241, 233, 209));
         getContentPane().add(txtPosicao);
 
         JLabel label_2 = new JLabel("  Nota (Ex: 8.5):");
@@ -84,7 +85,7 @@ public class TelaLancarNotas extends JFrame {
         label_2.setForeground(new Color(255, 255, 255));
         getContentPane().add(label_2);
         txtNota = new JTextField();
-        txtNota.setBackground(new Color(119, 118, 123));
+        txtNota.setBackground(new Color(241, 233, 209));
         getContentPane().add(txtNota);
 
         btnVoltar = new JButton("Voltar ao Menu");
