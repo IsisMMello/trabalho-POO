@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.36, for Linux (x86_64)
 --
--- Host: localhost    Database: ementor-Plus
+-- Host: localhost    Database: ementor
 -- ------------------------------------------------------
 -- Server version	8.0.46-0ubuntu0.24.04.2
 
@@ -41,6 +41,7 @@ CREATE TABLE `Aluno` (
 
 LOCK TABLES `Aluno` WRITE;
 /*!40000 ALTER TABLE `Aluno` DISABLE KEYS */;
+INSERT INTO `Aluno` VALUES ('1','11111111',1,1),('2','2',2,1);
 /*!40000 ALTER TABLE `Aluno` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -68,6 +69,7 @@ CREATE TABLE `Egresso` (
 
 LOCK TABLES `Egresso` WRITE;
 /*!40000 ALTER TABLE `Egresso` DISABLE KEYS */;
+INSERT INTO `Egresso` VALUES ('1','dev',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `Egresso` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -125,7 +127,36 @@ CREATE TABLE `Pessoa` (
 
 LOCK TABLES `Pessoa` WRITE;
 /*!40000 ALTER TABLE `Pessoa` DISABLE KEYS */;
+INSERT INTO `Pessoa` VALUES ('11111','maria','1977-09-02','444','rua','bairro','cidade','es'),('11111111','isis','2005-08-08','1','rua','bairro','cidade','es'),('1111111111','eduardo','2006-02-09','111111','rua','bairro','cidade','es'),('2','eduardo','2006-02-09','7','rua','bairro','cidade','es');
 /*!40000 ALTER TABLE `Pessoa` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Professor`
+--
+
+DROP TABLE IF EXISTS `Professor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Professor` (
+  `CPF_Pessoa` varchar(11) NOT NULL,
+  `DataAdmissao` date DEFAULT NULL,
+  `CargoChefia` tinyint(1) DEFAULT NULL,
+  `CargoCoordenacao` tinyint(1) DEFAULT NULL,
+  `SalarioBruto` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`CPF_Pessoa`),
+  CONSTRAINT `Professor_ibfk_1` FOREIGN KEY (`CPF_Pessoa`) REFERENCES `Pessoa` (`CPF`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Professor`
+--
+
+LOCK TABLES `Professor` WRITE;
+/*!40000 ALTER TABLE `Professor` DISABLE KEYS */;
+INSERT INTO `Professor` VALUES ('11111',NULL,NULL,NULL,11000.00);
+/*!40000 ALTER TABLE `Professor` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -148,6 +179,7 @@ CREATE TABLE `Turma` (
 
 LOCK TABLES `Turma` WRITE;
 /*!40000 ALTER TABLE `Turma` DISABLE KEYS */;
+INSERT INTO `Turma` VALUES (1,'Programação Orientada a Objetos');
 /*!40000 ALTER TABLE `Turma` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -173,34 +205,8 @@ CREATE TABLE `Usuario` (
 
 LOCK TABLES `Usuario` WRITE;
 /*!40000 ALTER TABLE `Usuario` DISABLE KEYS */;
+INSERT INTO `Usuario` VALUES ('admin','1234',1);
 /*!40000 ALTER TABLE `Usuario` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Professor`
---
-
-DROP TABLE IF EXISTS `Professor`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Professor` (
-  `CPF_Pessoa` varchar(11) NOT NULL,
-  `SalarioBruto` decimal(10,2) DEFAULT NULL,
-  `DataAdmissao` varchar(20) DEFAULT NULL,
-  `CargoChefia` tinyint(1) DEFAULT '0',
-  `CargoCoordenacao` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`CPF_Pessoa`),
-  CONSTRAINT `Professor_ibfk_1` FOREIGN KEY (`CPF_Pessoa`) REFERENCES `Pessoa` (`CPF`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Professor`
---
-
-LOCK TABLES `Professor` WRITE;
-/*!40000 ALTER TABLE `Professor` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Professor` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -212,4 +218,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-07-13 13:13:07
+-- Dump completed on 2026-07-13 21:58:16
