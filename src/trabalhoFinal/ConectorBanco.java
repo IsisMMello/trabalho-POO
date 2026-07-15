@@ -16,8 +16,8 @@ public class ConectorBanco {
 
     public Connection conectar() throws SQLException {
         String url = "jdbc:mysql://localhost:3306/ementor";
-        String usuario = "root";
-        String senha = "09022006"; 
+        String usuario = "ementor_app";
+        String senha = "1234"; 
         
         return DriverManager.getConnection(url, usuario, senha);
     }

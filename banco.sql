@@ -15,6 +15,18 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+-- Cria o usuário exclusivo do projeto caso ele ainda não exista
+CREATE USER IF NOT EXISTS 'ementor_app'@'localhost' IDENTIFIED BY '1234';
+
+-- Cria o banco de dados
+DROP DATABASE IF EXISTS ementor;
+CREATE DATABASE ementor;
+USE ementor;
+
+-- Dá as permissões necessárias para o novo usuário mexer neste banco
+GRANT SELECT, INSERT, UPDATE, DELETE ON ementor.* TO 'ementor_app'@'localhost';
+FLUSH PRIVILEGES;
+
 --
 -- Table structure for table `Aluno`
 --
