@@ -60,13 +60,13 @@ public class MenuPrincipal extends JFrame {
         // Criação direta dos quatro botões.
         JButton btnCadastro = new JButton(
                 "<html><center>Cadastrar Pessoas<br>"
-                        + "(Cadastrar/Alterar)</center></html>",
+                        + "(Cadastrar/Alterar/Excluir)</center></html>",
                 iconeCadastro
         );
 
         JButton btnListagem = new JButton(
                 "<html><center>Visualizar Cadastros<br>"
-                        + "(Tabelas)</center></html>",
+                        + "</center></html>",
                 iconeListagem
         );
 
